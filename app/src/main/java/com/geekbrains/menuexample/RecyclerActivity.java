@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,7 @@ public class RecyclerActivity extends AppCompatActivity implements View.OnClickL
     FloatingActionButton addView;
     RecyclerView recycleView;
     CustomElementsAdapter adapter;
+    Toolbar toolbar;
 
     ///////////////////////////////////////////////////////////////////////////
     // Lifecycle
@@ -60,11 +62,17 @@ public class RecyclerActivity extends AppCompatActivity implements View.OnClickL
     ///////////////////////////////////////////////////////////////////////////
 
     private void initViews() {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         addView = findViewById(R.id.ar_fb_add);
         addView.setOnClickListener(this);
+
         recycleView = findViewById(R.id.listView);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
+
         adapter = new CustomElementsAdapter(getData());
+
         recycleView.setAdapter(adapter);
     }
 

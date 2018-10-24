@@ -12,20 +12,11 @@ import java.util.List;
 
 
 ///////////////////////////////////////////////////////////////////////////
-// On Custom Adapter Click Listener
-///////////////////////////////////////////////////////////////////////////
-
-interface OnCustomAdapterClickListener{
-    void removeView(int position);
-    void editView(int position);
-}
-
-
-///////////////////////////////////////////////////////////////////////////
 // Custom Elements Adapter
 ///////////////////////////////////////////////////////////////////////////
 
-public class CustomElementsAdapter extends RecyclerView.Adapter<CustomElementsAdapter.CustomViewHolder> implements OnCustomAdapterClickListener {
+public class CustomElementsAdapter extends RecyclerView.Adapter<CustomElementsAdapter.CustomViewHolder>
+        implements OnCustomAdapterClickListener {
 
     private List<String> mDataset;
 
@@ -58,12 +49,18 @@ public class CustomElementsAdapter extends RecyclerView.Adapter<CustomElementsAd
 
     public void addView(String text) {
         mDataset.add(text);
-        notifyDataSetChanged();
+        notifyItemInserted(mDataset.size() - 1);
     }
 
     @Override
     public void removeView(int position) {
         mDataset.remove(position);
+        notifyDataSetChanged();
+    }
+
+    public void setAll(List<String> list){
+        mDataset = list;
+
         notifyDataSetChanged();
     }
 
@@ -78,7 +75,9 @@ public class CustomElementsAdapter extends RecyclerView.Adapter<CustomElementsAd
         notifyDataSetChanged();
     }
 
-    static class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+    static class CustomViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener,
+            PopupMenu.OnMenuItemClickListener {
 
         TextView mTextView;
         TextView mContextView;

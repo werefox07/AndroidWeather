@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RecyclerActivity">
+        <activity
+            android:name=".RecyclerActivity"
+            android:theme="@style/AppThemeNoActionBar">
 
         </activity>
 
