@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
 import java.util.List;
 
 
 ///////////////////////////////////////////////////////////////////////////
 // Custom Elements Adapter
 ///////////////////////////////////////////////////////////////////////////
+
 
 public class CustomElementsAdapter extends RecyclerView.Adapter<CustomElementsAdapter.CustomViewHolder>
         implements OnCustomAdapterClickListener {
@@ -76,7 +78,7 @@ public class CustomElementsAdapter extends RecyclerView.Adapter<CustomElementsAd
     }
 
     static class CustomViewHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener,
+             implements View.OnClickListener,
             PopupMenu.OnMenuItemClickListener {
 
         TextView mTextView;
@@ -84,7 +86,8 @@ public class CustomElementsAdapter extends RecyclerView.Adapter<CustomElementsAd
 
         private OnCustomAdapterClickListener callbacks;
 
-        CustomViewHolder(View v) {
+
+        CustomViewHolder(View v){
             super(v);
             mTextView = v.findViewById(R.id.txtTitle);
             mContextView = v.findViewById(R.id.txtOptionDigit);

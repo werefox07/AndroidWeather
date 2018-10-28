@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,4 +118,25 @@ public class ListActivity extends AppCompatActivity {
         elements.remove(id);
         adapter.notifyDataSetChanged();
     }
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_add:
+                        addElement();
+                        return true;
+                    case R.id.menu_clear:
+                        clearList();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        popup.inflate(R.menu.main_menu);
+        popup.show();
+    }
+
 }
